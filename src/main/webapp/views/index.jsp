@@ -1,7 +1,8 @@
 <html>
 <head><title>Yay</title></head>
 <body>
-'ello
+
+${somethingElse}
 
 <form action="sendVals">
     Enter text : <input type="text" name="text1"><br>

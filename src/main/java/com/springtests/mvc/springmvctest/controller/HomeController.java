@@ -1,18 +1,19 @@
 package com.springtests.mvc.springmvctest.controller;
 
 import com.springtests.mvc.springmvctest.model.Alien;
+import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
+
+    @ModelAttribute
+    public void readyModelData(Model genericModel) {
+        genericModel.addAttribute("somethingElse", "this is from somewhere else");
+    }
 
     @RequestMapping("/")
     public String home() {
@@ -20,7 +21,9 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("sendVals")
+    ///@RequestMapping("sendVals") will accept any method of connection
+    // below mapping will only accept POST
+    @RequestMapping(value = "sendVals", method = RequestMethod.POST)
     public ModelAndView sendVals(@RequestParam("text1") String textVal,
                                  @RequestParam("num1") String numVal) {
         ModelAndView mv = new ModelAndView("values");
@@ -30,7 +33,9 @@ public class HomeController {
         return mv;
     }
 
-    @RequestMapping("alienate")
+    ///@RequestMapping("alienate") will accept any method of connection
+    // below mapping will only accept POST
+    @RequestMapping(value = "alienate", method = RequestMethod.POST)
     public String alienate(@RequestParam("id2") String id2,
                            @RequestParam("name2") String name2,
                            Model alienModel) {
@@ -39,8 +44,10 @@ public class HomeController {
         return "alienated";
     }
 
+
+    // below mapping will only accept POST
     ///Model attribute adds objects to the model automatically
-    @RequestMapping("alienationWithStyle")
+    @PostMapping("alienationWithStyle")
     public String alienationWithStyle(@ModelAttribute("alienStyle") Alien alien) {
         return "alienated";
     }
