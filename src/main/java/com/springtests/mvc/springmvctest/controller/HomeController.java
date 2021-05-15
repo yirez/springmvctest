@@ -2,6 +2,8 @@ package com.springtests.mvc.springmvctest.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,18 +14,17 @@ public class HomeController {
     @RequestMapping("/")
     public String home(){
         System.out.println("home page req");
-        return "index.jsp";
+        return "index";
     }
 
     @RequestMapping("sendVals")
-    public String sendVals(HttpServletRequest req){
-        String textVal= req.getParameter("text1");
-        String numVal= req.getParameter("num1");
+    public ModelAndView sendVals(@RequestParam("text1") String textVal,
+                           @RequestParam("num1") String numVal){
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("values");
+        mv.addObject("resText",textVal);
+        mv.addObject("resNum",numVal);
 
-        HttpSession session= req.getSession();
-        session.setAttribute("resText",textVal);
-        session.setAttribute("resNum",numVal);
-
-        return "values.jsp";
+        return mv;
     }
 }
