@@ -11,6 +11,11 @@
 
 
 <form action="alienate">
+    Enter id : <input type="number" name="id2"><br>
+    Enter name : <input type="text" name="name2"><br>
+    <input type="submit">
+</form>
+<form action="alienationWithStyle">
     Enter id : <input type="number" name="id"><br>
     Enter name : <input type="text" name="name"><br>
     <input type="submit">
