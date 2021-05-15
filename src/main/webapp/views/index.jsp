@@ -12,7 +12,7 @@ ${somethingElse}
     <input type="submit">
 </form>
 
-<br>read input via ModelAndView object use<br>
+<br>read input via ModelAndView object use. ALSO SAVES ALIEN<br>
 <form action="alienate" method="post">
     Enter id : <input type="number" name="id2"><br>
     Enter name : <input type="text" name="name2"><br>
