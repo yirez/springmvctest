@@ -1,16 +1,26 @@
 package com.springtests.mvc.springmvctest.model;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "alien", schema = "springapp")
 public class Alien {
-    public Alien(String id, String name) {
+    public Alien(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public String getId() {
+    public Alien() {
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -22,6 +32,7 @@ public class Alien {
         this.name = name;
     }
 
-    private String id;
+    @Id
+    private int id;
     private String name;
 }
