@@ -32,5 +32,16 @@ ${somethingElse}
     Enter id : <input type="number" name="id3"><br>
     <input type="submit">
 </form>
+
+<br>find alien by name<br>
+<form action="findAlienByName" method="get">
+    Enter name : <input type="text" name="name3"><br>
+    <input type="submit">
+</form>
+<br>find alien with id bigger than the one entered<br>
+<form action="findAlienWithBiggerId" method="get">
+    Enter id : <input type="number" name="id4"><br>
+    <input type="submit">
+</form>
 </body>
 </html>

@@ -27,6 +27,20 @@ public class HomeController {
         return "alienated";
     }
 
+    @GetMapping("findAlienByName")
+    public String findAlienByName(@RequestParam("name3") String name3, Model model){
+        //model.addAttribute("alienList", alienRepo.findByName(name3));
+        model.addAttribute("alienList", alienRepo.findByNameIgnoreCaseContaining(name3));
+        return "showAliens";
+    }
+
+
+    @GetMapping("findAlienWithBiggerId")
+    public String findAlienWithBiggerId(@RequestParam("id4") int id4, Model model){
+        model.addAttribute("alienList", alienRepo.filterAliensWithBiggerID(id4));
+        return "showAliens";
+    }
+
     ///@RequestMapping("alienate") will accept any method of connection
     // below mapping will only accept POST
     @RequestMapping(value = "alienate", method = RequestMethod.POST)
